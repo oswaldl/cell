@@ -6,10 +6,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
-	"fmt"
 )
 
-const MAX_DICE_NUM  = 5
 
 func main() {
 	m := martini.Classic()
@@ -43,11 +41,8 @@ func registerWebService(m *martini.ClassicMartini) {
 
 		num := make([]int, diceNum)
 
-		if diceNum > MAX_DICE_NUM {
-			return http.StatusBadRequest, fmt.Sprintf("%s%d", "diceNum is over " , MAX_DICE_NUM)
-		}
 
-		var dices [MAX_DICE_NUM]gambling.Dice
+		var dices []gambling.Dice = make([]gambling.Dice, diceNum)
 		for i := range num {
 			dices[i] = gambling.Dice{6, 0}
 			dices[i].RandNext()
