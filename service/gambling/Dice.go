@@ -1,7 +1,7 @@
 package gambling
 
+// 骰子
 type Dice struct {
-
 	// 骰子的最大点数
 	MaxNum int
 
